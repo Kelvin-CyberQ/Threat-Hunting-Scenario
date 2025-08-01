@@ -1,6 +1,7 @@
 # Official [Cyber Range](http://joshmadakor.tech/cyber-range) Project
 
-<img width="400" src="https://github.com/user-attachments/assets/44bac428-01bb-4fe9-9d85-96cba7698bee" alt="Tor Logo with the onion and a crosshair on it"/>
+<img width="482" height="323" alt="image" src="https://github.com/user-attachments/assets/f68293a8-48ff-4687-ae46-35b6993b602a" />
+
 
 # Threat Hunt Report: Unauthorized TOR Usage
 - [Scenario Creation](https://github.com/Kelvin-CyberQ/Threat-Hunting-Scenario/blob/main/Threat-Hunting-Scenario-Tor-event-creation.md)
