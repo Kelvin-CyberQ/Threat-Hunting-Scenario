@@ -100,61 +100,130 @@ DeviceNetworkEvents
 
 ## Chronological Event Timeline 
 
-### 1. File Download - TOR Installer
+<h3>Tor Browser Installation and Activity Timeline</h3>
 
-- **Timestamp:** `2024-11-08T22:14:48.6065231Z`
-- **Event:** The user "employee" downloaded a file named `tor-browser-windows-x86_64-portable-14.0.1.exe` to the Downloads folder.
-- **Action:** File download detected.
-- **File Path:** `C:\Users\employee\Downloads\tor-browser-windows-x86_64-portable-14.0.1.exe`
-
-### 2. Process Execution - TOR Browser Installation
-
-- **Timestamp:** `2024-11-08T22:16:47.4484567Z`
-- **Event:** The user "employee" executed the file `tor-browser-windows-x86_64-portable-14.0.1.exe` in silent mode, initiating a background installation of the TOR Browser.
-- **Action:** Process creation detected.
-- **Command:** `tor-browser-windows-x86_64-portable-14.0.1.exe /S`
-- **File Path:** `C:\Users\employee\Downloads\tor-browser-windows-x86_64-portable-14.0.1.exe`
-
-### 3. Process Execution - TOR Browser Launch
-
-- **Timestamp:** `2024-11-08T22:17:21.6357935Z`
-- **Event:** User "employee" opened the TOR browser. Subsequent processes associated with TOR browser, such as `firefox.exe` and `tor.exe`, were also created, indicating that the browser launched successfully.
-- **Action:** Process creation of TOR browser-related executables detected.
-- **File Path:** `C:\Users\employee\Desktop\Tor Browser\Browser\TorBrowser\Tor\tor.exe`
-
-### 4. Network Connection - TOR Network
-
-- **Timestamp:** `2024-11-08T22:18:01.1246358Z`
-- **Event:** A network connection to IP `176.198.159.33` on port `9001` by user "employee" was established using `tor.exe`, confirming TOR browser network activity.
-- **Action:** Connection success.
-- **Process:** `tor.exe`
-- **File Path:** `c:\users\employee\desktop\tor browser\browser\torbrowser\tor\tor.exe`
-
-### 5. Additional Network Connections - TOR Browser Activity
-
-- **Timestamps:**
-  - `2024-11-08T22:18:08Z` - Connected to `194.164.169.85` on port `443`.
-  - `2024-11-08T22:18:16Z` - Local connection to `127.0.0.1` on port `9150`.
-- **Event:** Additional TOR network connections were established, indicating ongoing activity by user "employee" through the TOR browser.
-- **Action:** Multiple successful connections detected.
-
-### 6. File Creation - TOR Shopping List
-
-- **Timestamp:** `2024-11-08T22:27:19.7259964Z`
-- **Event:** The user "employee" created a file named `tor-shopping-list.txt` on the desktop, potentially indicating a list or notes related to their TOR browser activities.
-- **Action:** File creation detected.
-- **File Path:** `C:\Users\employee\Desktop\tor-shopping-list.txt`
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Timestamp (UTC)</th>
+      <th>Source Log</th>
+      <th>File Path</th>
+      <th>Action</th>
+      <th>Event</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>18 : 41 : 40</td>
+      <td>DeviceFileEvents</td>
+      <td><code>C:\Users\Kelzteck\Downloads\tor-browser-windows-x86_64-portable-14.5.5.exe</code></td>
+      <td>File downloaded</td>
+      <td><code>tor-browser-windows-x86_64-portable-14.5.5.exe</code> finishes downloading into Downloads</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>18 : 42 : 10</td>
+      <td>DeviceProcessEvents</td>
+      <td><code>C:\Users\Kelzteck\Downloads\tor-browser-windows-x86_64-portable-14.5.5.exe</code></td>
+      <td>Process created</td>
+      <td>User kelzteck executes the installer</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>18 : 42 : 29</td>
+      <td>DeviceProcessEvents</td>
+      <td><code>C:\Users\Kelzteck\Downloads\tor-browser-windows-x86_64-portable-14.5.5.exe</code></td>
+      <td>Process created</td>
+      <td>Second launch of the installer</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>18 : 47 : 21</td>
+      <td>DeviceProcessEvents</td>
+      <td><code>C:\Users\Kelzteck\Downloads\tor-browser-windows-x86_64-portable-14.5.5.exe</code></td>
+      <td>Process created</td>
+      <td>Installer is re-run silently, targeting Desktop\Tor Browser</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>18 : 47 : 22 – 18 : 59 : 48</td>
+      <td>DeviceFileEvents</td>
+      <td><code>C:\Users\Kelzteck\Desktop\Tor Browser\...</code></td>
+      <td>Multiple files created</td>
+      <td>Bulk creation of Tor Browser program files (e.g., <code>tor.exe</code>, <code>firefox.exe</code>) under Desktop\Tor Browser\Browser\TorBrowser</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>18 : 49 : 14</td>
+      <td>DeviceProcessEvents</td>
+      <td><code>C:\Users\Kelzteck\Desktop\Tor Browser\Browser\firefox.exe</code></td>
+      <td>Process created</td>
+      <td><code>firefox.exe</code> (Tor Browser UI) starts from the new install path</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>18 : 49 : 29</td>
+      <td>DeviceNetworkEvents</td>
+      <td><code>C:\Users\Kelzteck\Desktop\Tor Browser\Browser\TorBrowser\Tor\tor.exe</code></td>
+      <td>Network connect</td>
+      <td>First outbound Tor handshake – <code>tor.exe</code> connects to 23.190.168.243 : 9001</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>18 : 49 : 31 – 18 : 49 : 32</td>
+      <td>DeviceNetworkEvents</td>
+      <td><code>C:\Users\Kelzteck\Desktop\Tor Browser\Browser\TorBrowser\Tor\tor.exe</code></td>
+      <td>Network connect</td>
+      <td>Additional bootstrap traffic from <code>tor.exe</code> to relays 45.83.105.223 : 443, 46.22.165.111 : 9001, 64.65.0.85 : 443</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>19 : 00 : 10</td>
+      <td>DeviceProcessEvents</td>
+      <td><code>C:\Users\Kelzteck\Desktop\Tor Browser\Browser\TorBrowser\Tor\tor.exe</code></td>
+      <td>Process created</td>
+      <td>New <code>tor.exe</code> helper instance spawns (background service)</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>19 : 00 : 21</td>
+      <td>DeviceNetworkEvents</td>
+      <td><code>C:\Users\Kelzteck\Desktop\Tor Browser\Browser\TorBrowser\Tor\tor.exe</code></td>
+      <td>Network connect</td>
+      <td><code>tor.exe</code> builds a circuit to 46.22.165.111 : 9001 and reaches hidden service https://www.dnvks4xxv.com</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>19 : 00 : 22 – 19 : 05</td>
+      <td>DeviceNetworkEvents</td>
+      <td><code>C:\Users\Kelzteck\Desktop\Tor Browser\Browser\TorBrowser\Tor\tor.exe</code></td>
+      <td>Network connect (ongoing)</td>
+      <td>Continuing Tor traffic over ports 9001 and 443 to multiple relays</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>19 : 31 : 05</td>
+      <td>DeviceFileEvents</td>
+      <td><code>C:\Users\Kelzteck\Desktop\tor-shopping-list.txt</code></td>
+      <td>File created</td>
+      <td>User creates <code>tor-shopping-list.txt</code> on the Desktop (and corresponding shortcut in Recent Files)</td>
+    </tr>
+  </tbody>
+</table>
+`
 
 ---
 
 ## Summary
 
-The user "employee" on the "threat-hunt-lab" device initiated and completed the installation of the TOR browser. They proceeded to launch the browser, establish connections within the TOR network, and created various files related to TOR on their desktop, including a file named `tor-shopping-list.txt`. This sequence of activities indicates that the user actively installed, configured, and used the TOR browser, likely for anonymous browsing purposes, with possible documentation in the form of the "shopping list" file.
+The user "kel-99" on the "Kelzteck" device initiated and completed the installation of the TOR browser. They proceeded to launch the browser, establish connections within the TOR network, and created various files related to TOR on their desktop, including a file named `tor-shopping-list.txt`. This sequence of activities indicates that the user actively installed, configured, and used the TOR browser, likely for anonymous browsing purposes, with possible documentation in the form of the "shopping list" file.
 
 ---
 
 ## Response Taken
 
-TOR usage was confirmed on the endpoint `threat-hunt-lab` by the user `employee`. The device was isolated, and the user's direct manager was notified.
+TOR usage was confirmed on the endpoint `Kelzteck` by the user `kel-99`. The device was isolated, and the user's direct manager was notified.
 
 ---
